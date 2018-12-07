@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>415</width>
-    <height>233</height>
+    <width>511</width>
+    <height>265</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -23,62 +23,13 @@
    <enum>QTabWidget::Rounded</enum>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QWidget" name="verticalLayoutWidget">
-    <property name="geometry">
-     <rect>
-      <x>30</x>
-      <y>80</y>
-      <width>121</width>
-      <height>121</height>
-     </rect>
-    </property>
-    <layout class="QVBoxLayout" name="verticalLayout">
-     <property name="leftMargin">
-      <number>5</number>
-     </property>
-     <property name="topMargin">
-      <number>2</number>
-     </property>
-     <property name="bottomMargin">
-      <number>5</number>
-     </property>
-     <item>
-      <widget class="QLabel" name="regionToCapLbl">
-       <property name="text">
-        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Region to capture&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QRadioButton" name="capEntireScreenbtn">
-       <property name="text">
-        <string>Entire screen</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QRadioButton" name="capActiveWindowBtn">
-       <property name="text">
-        <string>Active window</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QRadioButton" name="capSelectRegionBtn">
-       <property name="text">
-        <string>Select a region</string>
-       </property>
-      </widget>
-     </item>
-    </layout>
-   </widget>
    <widget class="QLabel" name="windowTitleLabel">
     <property name="geometry">
      <rect>
-      <x>0</x>
-      <y>9</y>
-      <width>411</width>
-      <height>51</height>
+      <x>150</x>
+      <y>10</y>
+      <width>215</width>
+      <height>31</height>
      </rect>
     </property>
     <property name="text">
@@ -89,8 +40,8 @@
     <property name="geometry">
      <rect>
       <x>0</x>
-      <y>50</y>
-      <width>421</width>
+      <y>40</y>
+      <width>511</width>
       <height>20</height>
      </rect>
     </property>
@@ -101,10 +52,10 @@
    <widget class="QPushButton" name="startBtn">
     <property name="geometry">
      <rect>
-      <x>320</x>
-      <y>200</y>
+      <x>420</x>
+      <y>230</y>
       <width>85</width>
-      <height>27</height>
+      <height>26</height>
      </rect>
     </property>
     <property name="text">
@@ -114,10 +65,10 @@
    <widget class="QPushButton" name="cancelBtn">
     <property name="geometry">
      <rect>
-      <x>210</x>
-      <y>200</y>
+      <x>320</x>
+      <y>230</y>
       <width>85</width>
-      <height>27</height>
+      <height>26</height>
      </rect>
     </property>
     <property name="text">
@@ -127,21 +78,73 @@
    <widget class="QSpinBox" name="delaySpinBox">
     <property name="geometry">
      <rect>
-      <x>295</x>
-      <y>100</y>
-      <width>71</width>
+      <x>390</x>
+      <y>120</y>
+      <width>101</width>
       <height>41</height>
      </rect>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::ClickFocus</enum>
+    </property>
+    <property name="toolTip">
+     <string>Select the delay before taking the screenshot or beginning screencast</string>
+    </property>
+    <property name="toolTipDuration">
+     <number>3</number>
+    </property>
+    <property name="layoutDirection">
+     <enum>Qt::LeftToRight</enum>
     </property>
     <property name="readOnly">
      <bool>true</bool>
     </property>
     <property name="buttonSymbols">
-     <enum>QAbstractSpinBox::UpDownArrows</enum>
+     <enum>QAbstractSpinBox::PlusMinus</enum>
     </property>
     <property name="maximum">
      <number>60</number>
     </property>
+   </widget>
+   <widget class="QWidget" name="verticalLayoutWidget">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>70</y>
+      <width>160</width>
+      <height>121</height>
+     </rect>
+    </property>
+    <layout class="QVBoxLayout" name="verticalLayout">
+     <item>
+      <widget class="QLabel" name="regionToCapLbl">
+       <property name="text">
+        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Region to capture&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QRadioButton" name="capEntireScrnRadBtn">
+       <property name="text">
+        <string>Entire screen</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QRadioButton" name="capSelectRgnRadBtn">
+       <property name="text">
+        <string>Select a region</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QRadioButton" name="capActiveWndRadBtn">
+       <property name="text">
+        <string>Active window</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
    </widget>
   </widget>
  </widget>
