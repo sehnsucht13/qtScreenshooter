@@ -8,14 +8,11 @@
 
 from PyQt5 import QtCore, QtGui, QtWidgets
 
-class Ui_qtScreenshooter(object):
-    def setupUi(self, qtScreenshooter):
-        qtScreenshooter.setObjectName("qtScreenshooter")
-        qtScreenshooter.resize(622, 362)
-        self.mediaPreviewArea = QtWidgets.QGraphicsView(qtScreenshooter)
-        self.mediaPreviewArea.setGeometry(QtCore.QRect(300, 70, 291, 221))
-        self.mediaPreviewArea.setObjectName("mediaPreviewArea")
-        self.verticalLayoutWidget = QtWidgets.QWidget(qtScreenshooter)
+class Ui_qtScreenshooterSaveWindow(object):
+    def setupUi(self, qtScreenshooterSaveWindow):
+        qtScreenshooterSaveWindow.setObjectName("qtScreenshooterSaveWindow")
+        qtScreenshooterSaveWindow.resize(622, 362)
+        self.verticalLayoutWidget = QtWidgets.QWidget(qtScreenshooterSaveWindow)
         self.verticalLayoutWidget.setGeometry(QtCore.QRect(60, 105, 160, 141))
         self.verticalLayoutWidget.setObjectName("verticalLayoutWidget")
         self.optnVertLayout = QtWidgets.QVBoxLayout(self.verticalLayoutWidget)
@@ -36,43 +33,47 @@ class Ui_qtScreenshooter(object):
         self.checkBox = QtWidgets.QCheckBox(self.verticalLayoutWidget)
         self.checkBox.setObjectName("checkBox")
         self.optnVertLayout.addWidget(self.checkBox)
-        self.line = QtWidgets.QFrame(qtScreenshooter)
+        self.line = QtWidgets.QFrame(qtScreenshooterSaveWindow)
         self.line.setGeometry(QtCore.QRect(-10, 50, 641, 20))
         self.line.setFrameShape(QtWidgets.QFrame.HLine)
         self.line.setFrameShadow(QtWidgets.QFrame.Sunken)
         self.line.setObjectName("line")
-        self.qtScreenshooterLabel = QtWidgets.QLabel(qtScreenshooter)
+        self.qtScreenshooterLabel = QtWidgets.QLabel(qtScreenshooterSaveWindow)
         self.qtScreenshooterLabel.setGeometry(QtCore.QRect(180, 10, 271, 41))
         self.qtScreenshooterLabel.setObjectName("qtScreenshooterLabel")
-        self.acceptBtn = QtWidgets.QPushButton(qtScreenshooter)
+        self.acceptBtn = QtWidgets.QPushButton(qtScreenshooterSaveWindow)
         self.acceptBtn.setGeometry(QtCore.QRect(510, 316, 91, 31))
         self.acceptBtn.setObjectName("acceptBtn")
-        self.cancelBtn = QtWidgets.QPushButton(qtScreenshooter)
+        self.cancelBtn = QtWidgets.QPushButton(qtScreenshooterSaveWindow)
         self.cancelBtn.setGeometry(QtCore.QRect(410, 316, 91, 31))
         self.cancelBtn.setObjectName("cancelBtn")
+        self.mediaPreviewLabel = QtWidgets.QLabel(qtScreenshooterSaveWindow)
+        self.mediaPreviewLabel.setGeometry(QtCore.QRect(310, 70, 301, 221))
+        self.mediaPreviewLabel.setText("")
+        self.mediaPreviewLabel.setObjectName("mediaPreviewLabel")
 
-        self.retranslateUi(qtScreenshooter)
-        QtCore.QMetaObject.connectSlotsByName(qtScreenshooter)
+        self.retranslateUi(qtScreenshooterSaveWindow)
+        QtCore.QMetaObject.connectSlotsByName(qtScreenshooterSaveWindow)
 
-    def retranslateUi(self, qtScreenshooter):
+    def retranslateUi(self, qtScreenshooterSaveWindow):
         _translate = QtCore.QCoreApplication.translate
-        qtScreenshooter.setWindowTitle(_translate("qtScreenshooter", "qtScreenshooter"))
-        self.optnLabel.setText(_translate("qtScreenshooter", "<html><head/><body><p align=\"center\"><span style=\" font-size:12pt; font-weight:600;\">Actions</span></p></body></html>"))
-        self.saveCheckbox.setText(_translate("qtScreenshooter", "Save"))
-        self.cpyToClpBrdCheckbox.setText(_translate("qtScreenshooter", "Copy to clipboard"))
-        self.uploadToImgurCheckbox.setText(_translate("qtScreenshooter", "Upload to imgur"))
-        self.checkBox.setText(_translate("qtScreenshooter", "CheckBox"))
-        self.qtScreenshooterLabel.setText(_translate("qtScreenshooter", "<html><head/><body><p align=\"center\"><span style=\" font-size:24pt; font-weight:600;\">qtScreenshooter</span></p></body></html>"))
-        self.acceptBtn.setText(_translate("qtScreenshooter", "Accept"))
-        self.cancelBtn.setText(_translate("qtScreenshooter", "Cancel"))
+        qtScreenshooterSaveWindow.setWindowTitle(_translate("qtScreenshooterSaveWindow", "qtScreenshooter"))
+        self.optnLabel.setText(_translate("qtScreenshooterSaveWindow", "<html><head/><body><p align=\"center\"><span style=\" font-size:12pt; font-weight:600;\">Actions</span></p></body></html>"))
+        self.saveCheckbox.setText(_translate("qtScreenshooterSaveWindow", "Save"))
+        self.cpyToClpBrdCheckbox.setText(_translate("qtScreenshooterSaveWindow", "Copy to clipboard"))
+        self.uploadToImgurCheckbox.setText(_translate("qtScreenshooterSaveWindow", "Upload to imgur"))
+        self.checkBox.setText(_translate("qtScreenshooterSaveWindow", "CheckBox"))
+        self.qtScreenshooterLabel.setText(_translate("qtScreenshooterSaveWindow", "<html><head/><body><p align=\"center\"><span style=\" font-size:24pt; font-weight:600;\">qtScreenshooter</span></p></body></html>"))
+        self.acceptBtn.setText(_translate("qtScreenshooterSaveWindow", "Accept"))
+        self.cancelBtn.setText(_translate("qtScreenshooterSaveWindow", "Cancel"))
 
 
 if __name__ == "__main__":
     import sys
     app = QtWidgets.QApplication(sys.argv)
-    qtScreenshooter = QtWidgets.QDialog()
-    ui = Ui_qtScreenshooter()
-    ui.setupUi(qtScreenshooter)
-    qtScreenshooter.show()
+    qtScreenshooterSaveWindow = QtWidgets.QDialog()
+    ui = Ui_qtScreenshooterSaveWindow()
+    ui.setupUi(qtScreenshooterSaveWindow)
+    qtScreenshooterSaveWindow.show()
     sys.exit(app.exec_())
 
