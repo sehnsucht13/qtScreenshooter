@@ -1,7 +1,7 @@
 import sys
-from PyQt5.QtCore import QTimer
-from PyQt5.QtWidgets import QMainWindow, QApplication, QWidget, QDialog
-from PyQt5.QtGui import QScreen, QPixmap
+from PyQt5.QtCore import QTimer 
+from PyQt5.QtWidgets import QMainWindow, QApplication, QWidget, QDialog, QFileDialog, QShortcut
+from PyQt5.QtGui import QScreen, QPixmap, QKeySequence 
 from qtScreenshooterMainWindow import Ui_qtScreenshooterMainWindow
 from qtScreenshooterSaveWindow import Ui_qtScreenshooterSaveWindow
 
@@ -17,6 +17,24 @@ class MainWin(QMainWindow, Ui_qtScreenshooterMainWindow):
         # 30 minutes troubleshooting it!!!!!!!!!!!!!!
         self.windowTimer = QTimer()
         self.saveWindow = SaveWin()
+
+        # Keyboard shortcuts
+        # Exit
+        self.exitShortcut = QShortcut(QKeySequence("Ctrl+Q"), self)
+        self.exitShortcut.activated.connect(self.close)
+
+        # Radio Button access
+        self.capEntireScreenShortcut = QShortcut(QKeySequence("Ctrl+E"), self)
+        self.capEntireScreenShortcut.activated.connect(self.capEntireScrnRadBtn.nextCheckState)
+        self.capRgnShortcut = QShortcut(QKeySequence("Ctrl+R"), self)
+        self.capRgnShortcut.activated.connect(self.capSelectRgnRadBtn.nextCheckState)
+        self.capActiveWinShortcut = QShortcut(QKeySequence("Ctrl+W"), self)
+        self.capActiveWinShortcut.activated.connect(self.capActiveWndRadBtn.nextCheckState)
+
+        # Start Button
+        self.startBtnShortcut = QShortcut(QKeySequence("Ctrl+S"), self)
+        self.startBtnShortcut.activated.connect(self.startBtnAction)
+
         
     def cancelBtnAction(self):
         """Close the window when cancel is pressed"""
@@ -29,10 +47,8 @@ class MainWin(QMainWindow, Ui_qtScreenshooterMainWindow):
             self.windowTimer.singleShot(500, self.takeScreenshot)
 
     def takeScreenshot(self, xStart=0, yStart=0, xWidth=0, yHeight=0):
-        print("I was called")
         screen = QApplication.primaryScreen()
         screenshot = screen.grabWindow(0)
-        # screenshot.save('shot.jpg', 'jpg')
         self.saveWindow.showMediaPreview(screenshot)
         self.saveWindow.showWin()
 
@@ -50,9 +66,10 @@ class SaveWin(QDialog, Ui_qtScreenshooterSaveWindow):
         self.show()
 
     def showMediaPreview(self, media):
-        print("I was called as ewll")
         image = QPixmap(media)
-        self.mediaPreviewLabel.setPixmap(image.scaled(301, 221))
+        self.mediaPreviewLabel.setPixmap(image.scaled(300, 230))
+        ff = QFileDialog(self, "Save", "/home")
+        ff.exec()
 
 
 def main():
