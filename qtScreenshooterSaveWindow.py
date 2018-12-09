@@ -13,7 +13,7 @@ class Ui_qtScreenshooterSaveWindow(object):
         qtScreenshooterSaveWindow.setObjectName("qtScreenshooterSaveWindow")
         qtScreenshooterSaveWindow.resize(622, 362)
         self.verticalLayoutWidget = QtWidgets.QWidget(qtScreenshooterSaveWindow)
-        self.verticalLayoutWidget.setGeometry(QtCore.QRect(60, 105, 160, 141))
+        self.verticalLayoutWidget.setGeometry(QtCore.QRect(20, 100, 160, 151))
         self.verticalLayoutWidget.setObjectName("verticalLayoutWidget")
         self.optnVertLayout = QtWidgets.QVBoxLayout(self.verticalLayoutWidget)
         self.optnVertLayout.setContentsMargins(0, 0, 0, 0)
@@ -48,7 +48,7 @@ class Ui_qtScreenshooterSaveWindow(object):
         self.cancelBtn.setGeometry(QtCore.QRect(410, 316, 91, 31))
         self.cancelBtn.setObjectName("cancelBtn")
         self.mediaPreviewLabel = QtWidgets.QLabel(qtScreenshooterSaveWindow)
-        self.mediaPreviewLabel.setGeometry(QtCore.QRect(310, 70, 301, 221))
+        self.mediaPreviewLabel.setGeometry(QtCore.QRect(249, 70, 361, 230))
         self.mediaPreviewLabel.setText("")
         self.mediaPreviewLabel.setObjectName("mediaPreviewLabel")
 
