@@ -1,7 +1,7 @@
 import sys
 from PyQt5.QtCore import QTimer
 from PyQt5.QtWidgets import QMainWindow, QApplication, QWidget, QDialog, QFileDialog, QShortcut, QRubberBand, QErrorMessage
-from PyQt5.QtGui import QScreen, QPixmap, QKeySequence
+from PyQt5.QtGui import QScreen, QPixmap, QKeySequence, QWindow
 from qtScreenshooterMainWindow import Ui_qtScreenshooterMainWindow
 from qtScreenshooterSaveWindow import Ui_qtScreenshooterSaveWindow
 
@@ -36,6 +36,7 @@ class MainWin(QMainWindow, Ui_qtScreenshooterMainWindow):
         self.startBtnShortcut = QShortcut(QKeySequence("Ctrl+S"), self)
         self.startBtnShortcut.activated.connect(self.startBtnAction)
 
+        self.screenOverlay = QWidget()
         
     def cancelBtnAction(self):
         """Close the window when cancel is pressed"""
@@ -44,17 +45,38 @@ class MainWin(QMainWindow, Ui_qtScreenshooterMainWindow):
     def startBtnAction(self):
         if self.capEntireScrnRadBtn.isChecked():
             self.hide()
-            # Delay for 300 milliseconds and take screenshot
-            self.windowTimer.singleShot(500, self.takeScreenshot)
+            # Delay for 500 milliseconds and take screenshot
+            self.windowTimer.singleShot(500, self.takeFullScreenshot)
         elif self.capSelectRgnRadBtn.isChecked():
-            band = QRubberBand(QRubberBand.Rectangle)
-            band.setVisible(True)
+            self.hide()
+            self.takeRegionScreenshot()
+            print("You pressed the button")
 
-    def takeScreenshot(self, xStart=0, yStart=0, xWidth=0, yHeight=0):
+    def takeFullScreenshot(self):
         screen = QApplication.primaryScreen()
         screenshot = screen.grabWindow(0)
         self.saveWindow.showMediaPreview(screenshot)
         self.saveWindow.showWin()
+
+    def takeRegionScreenshot(self):
+        # Access the total size of the desktop
+        monitorProperties = QApplication.desktop().screenGeometry()
+
+        # Create an exit shortcut for Escape and CTRL+Q
+        exitSelectionWindowShortcutQ = QShortcut(QKeySequence("Ctrl+Q"), self.screenOverlay)
+        exitSelectionWindowShortcutQ.activated.connect(self.closeTransparentSelectionWindow)
+        exitSelectionWindowShortcutEsc = QShortcut(QKeySequence(QKeySequence.Cancel), self.screenOverlay)
+        exitSelectionWindowShortcutEsc.activated.connect(self.closeTransparentSelectionWindow)
+
+        # Set window opacity, size, focus and display the widget
+        self.screenOverlay.setWindowOpacity(0.4)
+        self.screenOverlay.setFixedSize(monitorProperties.width(), monitorProperties.height())
+        self.screenOverlay.show()
+        self.screenOverlay.setFocus()
+
+    def closeTransparentSelectionWindow(self):
+        self.screenOverlay.close()
+        self.show()
 
 
 class SaveWin(QDialog, Ui_qtScreenshooterSaveWindow):
